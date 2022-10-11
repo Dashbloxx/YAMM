@@ -1,0 +1,49 @@
+.drag {
+  position: relative;
+  display: inline-block;
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 0px;
+}
+
+.drag::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.drag:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.drag:hover::after {
+  opacity: 1;
+}
+
+.title {
+  font-family: Andale Mono, AndaleMono, monospace;
+}
+
+#container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 62.5%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
