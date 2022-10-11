@@ -1,37 +1,3 @@
-(function ($) {
-  if (!jQuery().draggable) {
-    $.fn.draggable = function () {
-      this.css("cursor", "move").on("mousedown", function (e) {
-        var $dragged = $(this);
-        var x = $dragged.offset().left - e.pageX,
-          y = $dragged.offset().top - e.pageY,
-          z = $dragged.css("z-index");
-        $(window)
-          .on("mousemove.draggable", function (e) {
-            $dragged
-              .css({
-                "z-index": 999,
-                bottom: "auto",
-                right: "auto",
-              })
-              .offset({
-                left: x + e.pageX,
-                top: y + e.pageY,
-              });
-          })
-          .one("mouseup", function () {
-            $(this).off("mousemove.draggable");
-            $dragged.css("z-index", z);
-          });
-        // disable selection
-        e.preventDefault();
-      });
-      return this;
-    };
-  }
-})(jQuery);
-$(".drag").draggable();
-
 let editor;
 require.config({
   paths: { vs: "https://unpkg.com/monaco-editor@latest/min/vs" },
